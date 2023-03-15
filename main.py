@@ -51,6 +51,22 @@ def list_prof(list):
     return html
 
 
+@app.route('/table/<gender>/<age>')
+def table(gender, age):
+    with open('templates/table.html', 'r', encoding='utf-8') as f:
+        html = f.read()
+    html = html.replace('{{ style_main }}', url_for('static', filename='css/style_main.css'))
+    if int(age) < 21:
+        img = 'baby-idk.png'
+    else:
+        img = 'idk.png'
+    if gender == 'male':
+        color = '#93eaf3'
+    else:
+        color = '#df94f2'
+    html = html.replace('{{ image }}', url_for('static', filename='img/' + img)).replace('{{ color }}', color)
+    return html
+
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

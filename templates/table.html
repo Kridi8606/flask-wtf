@@ -14,8 +14,9 @@
 <body>
     <h1>Миссия Колонизация Марса</h1>
     <h4>И на Марсе будут яблони цвести!</h4>
-    <{{ type }}>
-        {{ list }}
-    </{{ type }}>
+    <table>
+        <tr><th>Цвет стен</th><th>Эмблема</th></tr>
+        <tr><th><div style="background-color: {{ color }}; width: 300px; height: 300px;"></div></th><th><img src="{{ image }}" style="width: 300px; height: 300px;"></th></tr>
+    </table>
 </body>
 </html>

@@ -1,4 +1,6 @@
 from flask import Flask, url_for, request
+import json
+import random
 
 app = Flask(__name__)
 
@@ -65,6 +67,19 @@ def table(gender, age):
     else:
         color = '#df94f2'
     html = html.replace('{{ image }}', url_for('static', filename='img/' + img)).replace('{{ color }}', color)
+    return html
+
+
+@app.route('/member')
+def member():
+    with open('templates/members.json', 'r', encoding='utf-8') as f:
+        member = random.choice(json.load(f))
+    with open('templates/member.html', 'r', encoding='utf-8') as f:
+        html = f.read()
+    html = html.replace('{{ style_main }}', url_for('static', filename='css/style_main.css'))
+    html = html.replace('{{ name }}', member['name'])
+    html = html.replace('{{ image }}', url_for('static', filename='img/' + member['image']))
+    html = html.replace('{{ spec }}', ', '.join(member['spec']))
     return html
 
 

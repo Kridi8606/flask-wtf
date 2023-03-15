@@ -10,3 +10,9 @@ h4 {
     font-family: Verdana;
     color: grey;
 }
+
+.waffle {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px
+}
